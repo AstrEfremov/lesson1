@@ -8,8 +8,8 @@ public class MyArraylist<E> {
     transient Object[] elementData;
     private int size;
     protected transient int modCount = 0;
-    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[0];
-    private static final Object[] EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];
+    private final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[0];
+    private final Object[] EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];
 
     public MyArraylist(int initialCapacity) {
         if (initialCapacity > 0) {

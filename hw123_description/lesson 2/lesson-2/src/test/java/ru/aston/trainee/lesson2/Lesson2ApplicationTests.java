@@ -12,21 +12,29 @@ import java.util.Comparator;
 @SpringBootTest
 class Lesson2ApplicationTests {
 	MyArraylist<Integer> myIntArrayDemo = new MyArraylist<>();
+	MyArraylist<String> myStringArrayDemo = new MyArraylist<>();
 	@BeforeEach
 	void makeAMyArraylist(){
 		myIntArrayDemo.add(1);
 		myIntArrayDemo.add(65);
 		myIntArrayDemo.add(3);
 		myIntArrayDemo.add(4);
+
+		myStringArrayDemo.add("d");
+		myStringArrayDemo.add("b");
+		myStringArrayDemo.add("a");
+		myStringArrayDemo.add("c");
 	}
 	@Test
 	void getAnElement() {
 	Assertions.assertEquals(myIntArrayDemo.get(1), 65);
+	Assertions.assertEquals(myStringArrayDemo.get(1), "b");
 	}
 
 	@Test
 	void getSizeOfArray(){
 		Assertions.assertEquals(myIntArrayDemo.size(), 4);
+		Assertions.assertEquals(myStringArrayDemo.size(), 4);
 	}
 
 	@Test
@@ -49,8 +57,11 @@ class Lesson2ApplicationTests {
 	@Test
 	void sortingArray(){
 		myIntArrayDemo.sort(Comparator.naturalOrder());
+		myStringArrayDemo.sort(Comparator.naturalOrder());
 		Assertions.assertEquals(myIntArrayDemo.get(0),1 );
+		Assertions.assertEquals(myStringArrayDemo.get(0),"a" );
 		Assertions.assertEquals(myIntArrayDemo.get(myIntArrayDemo.size()-1), 65);
+		Assertions.assertEquals(myStringArrayDemo.get(myStringArrayDemo.size()-1), "d");
 	}
 
 }
