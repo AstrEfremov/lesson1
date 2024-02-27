@@ -3,7 +3,7 @@ package ru.aston.trainee.lesson2.myAraryList;
 
 import java.util.*;
 
-public class MyArraylist<E> {
+public class MyArraylist<E> implements MyArray<E>{
     private static final int DEFAULT_CAPACITY = 10;
     transient Object[] elementData;
     private int size;
@@ -26,6 +26,7 @@ public class MyArraylist<E> {
         this.elementData = EMPTY_ELEMENTDATA;
     }
 
+    @Override
     public int size() {
         return this.size;
     }
@@ -44,6 +45,7 @@ public class MyArraylist<E> {
         return this.grow(this.size + 1);
     }
 
+
     private void add(E e, Object[] elementData, int s) {
         if (s == elementData.length) {
             elementData = this.grow();
@@ -52,6 +54,7 @@ public class MyArraylist<E> {
         this.size = s + 1;
     }
 
+    @Override
     public boolean add(E e) {
         ++this.modCount;
         this.add(e, this.elementData, this.size);
@@ -93,7 +96,6 @@ public class MyArraylist<E> {
     public E remove(int index) {
         Objects.checkIndex(index, this.size);
         Object[] es = this.elementData;
-        @SuppressWarnings("unchecked")
         E oldValue = (E) es[index];
         this.fastRemove(es, index);
         return oldValue;
@@ -126,6 +128,7 @@ public class MyArraylist<E> {
         return this.batchRemove(c, false, 0, this.size);
     }
 
+    @Override
     public void clear() {
         ++this.modCount;
         Object[] es = this.elementData;

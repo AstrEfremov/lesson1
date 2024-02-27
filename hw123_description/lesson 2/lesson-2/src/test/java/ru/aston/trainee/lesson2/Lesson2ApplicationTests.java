@@ -2,17 +2,18 @@ package ru.aston.trainee.lesson2;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
+import ru.aston.trainee.lesson2.myAraryList.MyArray;
 import ru.aston.trainee.lesson2.myAraryList.MyArraylist;
 
 import java.util.Comparator;
 
 @SpringBootTest
 class Lesson2ApplicationTests {
-	MyArraylist<Integer> myIntArrayDemo = new MyArraylist<>();
-	MyArraylist<String> myStringArrayDemo = new MyArraylist<>();
+	MyArray<Integer> myIntArrayDemo = new MyArraylist<>();
+	MyArray<String> myStringArrayDemo = new MyArraylist<>();
 	@BeforeEach
 	void makeAMyArraylist(){
 		myIntArrayDemo.add(1);
@@ -26,6 +27,7 @@ class Lesson2ApplicationTests {
 		myStringArrayDemo.add("c");
 	}
 	@Test
+	@DisplayName("Get some element from Array")
 	void getAnElement() {
 	Assertions.assertEquals(myIntArrayDemo.get(1), 65);
 	Assertions.assertEquals(myStringArrayDemo.get(1), "b");
