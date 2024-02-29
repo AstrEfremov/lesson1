@@ -1,0 +1,39 @@
+CREATE TABLE students
+(id SERIAL primary key not null,
+ name VARCHAR(80) not null,
+ passport VARCHAR (20 )not null UNIQUE);
+
+CREATE TABLE subjects
+(id SERIAL primary key not null,
+ name TEXT not null UNIQUE);
+
+CREATE TABLE academic_perfomance
+(id SERIAL primary key not null,
+ student INTEGER,
+ subject INTEGER,
+ mark INTEGER CHECK(mark <=5 AND mark >=2), 
+ FOREIGN KEY (student) REFERENCES students (id) ON DELETE CASCADE,
+ FOREIGN KEY (subject) REFERENCES subjects (id) ON DELETE CASCADE
+ );
+
+INSERT INTO students (name, passport) VALUES ('John Malkovich', '1202 202020');
+
+INSERT INTO students (name, passport) VALUES ('Pavel Efremov', '1203 202020');
+
+INSERT INTO students (name, passport) VALUES ('Valerii Rosihin', '1203 302020');
+
+INSERT INTO subjects (name) VALUES ('Math');
+
+INSERT INTO subjects (name) VALUES ('Bio');
+
+INSERT INTO subjects (name) VALUES ('Geo');
+
+INSERT INTO subjects (name) VALUES ('Phi');
+
+INSERT INTO academic_perfomance (student, subject, mark) VALUES (1,2,4);
+
+INSERT INTO academic_perfomance (student, subject, mark) VALUES (2,2,3);
+
+INSERT INTO academic_perfomance (student, subject, mark) VALUES (3,1,5);
+
+INSERT INTO academic_perfomance (student, subject, mark) VALUES (3,3,5);
